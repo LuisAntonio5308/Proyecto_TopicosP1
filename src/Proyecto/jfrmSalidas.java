@@ -57,6 +57,8 @@ public class jfrmSalidas extends javax.swing.JFrame {
             }
         }
     }
+    
+    
     public void seleccionarSalida(){
     TableSalidas.addMouseListener(new MouseAdapter() {
         @Override
@@ -77,25 +79,29 @@ public class jfrmSalidas extends javax.swing.JFrame {
     });
 }
     
+    
     //Conocer el Ultimo ID del Ultimo Registro
     public int idSalida(){
     return IdSalida = this.controlador.IdSalida(salida1);
     }
         
 private void insertarSalida(){
-
     try {
-        
         String fecha = txtFecha.getText();
         String horaSalida = txtHoraSalida.getText();
         String destino = txtDestino.getText();
-        String nomSocio = cmbSocio.getSelectedItem().toString();
-        String nomBarco = cmbBarco.getSelectedItem().toString();
-        
+        String nomSocio = "";
+        String nomBarco = "";
+        try {
+        nomSocio = cmbSocio.getSelectedItem().toString();
+        nomBarco = cmbBarco.getSelectedItem().toString();
+        } catch (Exception e) {
+        }
         IdSalida = this.idSalida();
-        
+        if (fecha.equals("")||horaSalida.equals("")||destino.equals("")||nomSocio.isEmpty()||nomBarco.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Existen Campos Vacios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }else{
         boolean insertado = this.controlador.insertarSalida(IdSalida++, fecha, horaSalida, destino, nomSocio, nomBarco);
-        
         if (insertado == true) {
             JOptionPane.showMessageDialog(null, "Datos Guardados");
             this.cancelar();
@@ -103,10 +109,9 @@ private void insertarSalida(){
         }else{
             JOptionPane.showMessageDialog(null, "Algo fallo al Insertar");
         }
-        
+        }
     } catch (NumberFormatException | HeadlessException e) {
         JOptionPane.showMessageDialog(null, "Falla");
-        
     }
         }
 
@@ -129,19 +134,14 @@ private void actualizarSalida(){
         }else{
             JOptionPane.showMessageDialog(null, "Algo fallo al Actualizar");
         }
-    
-    
 }
+
 
 private void eliminarSalida(){
     try {
-        
         String fecha = txtFecha.getText();
         String horaSalida = txtHoraSalida.getText();
         String destino = txtDestino.getText();
-        //String nomSocio = cmbSocio.getSelectedItem().toString();
-        //String nomBarco = cmbBarco.getSelectedItem().toString();
-        
         int id = Integer.parseInt(txtIdSalida.getText());
         
     boolean eliminado = this.controlador.eliminarSalida(id, fecha, horaSalida, destino, null, null);
@@ -153,12 +153,11 @@ private void eliminarSalida(){
         }else{
         JOptionPane.showMessageDialog(null, "Algo fallo al eliminar");
         }
-        
     } catch (NumberFormatException | HeadlessException e) {
         JOptionPane.showMessageDialog(null, "El valor introducido no es un numero");
-        
     }
 }
+
 
 private void cancelar(){
     txtFecha.setText("");

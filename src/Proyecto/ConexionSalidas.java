@@ -12,10 +12,6 @@ import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
 import java.io.File;
 
-/**
- *
- * @author lo397
- */
 public class ConexionSalidas {
     private ObjectContainer oc;
     File file = new File("database5.yap");
@@ -32,25 +28,22 @@ public class ConexionSalidas {
            this.open();
            ObjectSet resultados = this.oc.queryByExample(objeto);
            int i = 0;
-           
             if (resultados.hasNext()) {
                 salidas = new Salidas[resultados.size()];
-                
                 while (resultados.hasNext()){
                     salidas[i] = (Salidas) resultados.next();
                     i++;
                 }
-                
                 Idsalida = (salidas[salidas.length-1].getId_Salida())+1;
             }
             this.oc.close();
             return Idsalida;
            
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
-            
             return 0;
         }
     }
+    
     
     public boolean InsertarSalida(Salidas objeto){
         try {
@@ -91,6 +84,7 @@ public class ConexionSalidas {
         
     }
     
+    
     public void BuscarSalida(Salidas objeto){
         this.open();
         Salidas encontrado = null;
@@ -101,14 +95,13 @@ public class ConexionSalidas {
         }
     }
     
+    
     public Salidas[] ConsultarSalida(Salidas objeto){
         try {
            Salidas[] salidas = null;
            this.open();
            ObjectSet resultados = this.oc.queryByExample(objeto);
-           
            int i = 0;
-           
             if (resultados.hasNext()) {
                 salidas = new Salidas[resultados.size()];
                 while (resultados.hasNext()){
@@ -118,11 +111,9 @@ public class ConexionSalidas {
             }
             this.oc.close();
             return salidas;
-           
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             System.out.println("bdoo.Controlador.consultarSalida() :" + e);
             return null;
-            
         }
       }
     

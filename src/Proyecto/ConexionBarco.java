@@ -12,10 +12,6 @@ import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
 import java.io.File;
 
-/**
- *
- * @author lo397
- */
 public class ConexionBarco {
      private ObjectContainer oc;
     File file = new File("database4.yap");
@@ -32,20 +28,16 @@ public class ConexionBarco {
            this.open();
            ObjectSet resultados = this.oc.queryByExample(objeto);
            int i = 0;
-           
             if (resultados.hasNext()) {
                 barco = new Barco[resultados.size()];
-                
                 while (resultados.hasNext()){
                     barco[i] = (Barco) resultados.next();
                     i++;
                 }
-                
                 IdBarco = (barco[barco.length-1].getIdBarco())+1;
             }
             this.oc.close();
             return IdBarco;
-           
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             
             return 0;
@@ -82,12 +74,10 @@ public class ConexionBarco {
                 this.oc.close();
                 return false;
             }
-            
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             System.out.println("bdoo.Controlador.actualizarBarco() : "+ e);
             return false;
         }
-        
     }
     
     public void BuscarBarco(Barco objeto){
@@ -105,9 +95,7 @@ public class ConexionBarco {
            Barco[] barco = null;
            this.open();
            ObjectSet resultados = this.oc.queryByExample(objeto);
-           
            int i = 0;
-           
             if (resultados.hasNext()) {
                 barco = new Barco[resultados.size()];
                 while (resultados.hasNext()){
@@ -123,7 +111,6 @@ public class ConexionBarco {
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             System.out.println("bdoo.Controlador.consultarBarco() :" + e);
             return null;
-            
         }
       }
     
@@ -145,6 +132,5 @@ public class ConexionBarco {
             return false;
         }
     }
-    
-    
 }
+

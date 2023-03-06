@@ -68,15 +68,21 @@ public void seleccionarSocio(){
     }
     
 private void insertarSocio(){
-
     try {
-        
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
-        String nomBarco = cmbBarco.getSelectedItem().toString();
+        String nomBarco = "";
         IdSocio = this.idSocio();
         
-        boolean insertado = this.controlador.insertarSocio(IdSocio++, nombre, apellido, nomBarco);
+        try {
+            nomBarco = cmbBarco.getSelectedItem().toString();
+        } catch (Exception e) {
+            
+        }
+        if (nombre.equals("")||apellido.equals("")||nomBarco.equals("")) {
+            JOptionPane.showMessageDialog(null, "Existen Campos Vacios", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }else{
+            boolean insertado = this.controlador.insertarSocio(IdSocio++, nombre, apellido, nomBarco);
         
         if (insertado == true) {
             JOptionPane.showMessageDialog(null, "Datos Guardados");
@@ -85,10 +91,9 @@ private void insertarSocio(){
         }else{
             JOptionPane.showMessageDialog(null, "Algo fallo al Insertar");
         }
-        
+        }
     } catch (NumberFormatException | HeadlessException e) {
         JOptionPane.showMessageDialog(null, "Falla");
-        
     }
         }
 
@@ -108,9 +113,8 @@ private void actualizarSocio(){
         }else{
             JOptionPane.showMessageDialog(null, "Algo fallo al Actualizar");
         }
-    
-    
 }
+
 
 private void eliminarSocio(){
     try {

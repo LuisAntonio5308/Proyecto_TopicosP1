@@ -6,11 +6,6 @@
 package Proyecto;
 
 import javax.swing.table.DefaultTableModel;
-
-/**
- *
- * @author lo397
- */
 public class ControladorBarco extends ConexionBarco{
     public ControladorBarco(){}
     

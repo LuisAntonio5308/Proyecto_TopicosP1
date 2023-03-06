@@ -58,7 +58,8 @@ public class Socio {
 
     @Override
     public String toString() {
-        return "Socio{" + "IdSocio=" + IdSocio + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", NomBarco=" + NomBarco + '}';
+        return "Socio{" + "IdSocio=" + IdSocio 
+                + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", NomBarco=" + NomBarco + '}';
     }
 
     

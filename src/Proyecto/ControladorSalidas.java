@@ -7,13 +7,8 @@ package Proyecto;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author lo397
- */
 public class ControladorSalidas extends ConexionSalidas{
     public ControladorSalidas(){}
-    
     
     public boolean insertarSalida(int Id_Salida, String Fecha, String HoraSalida, String Destino, String NomSocio, String NomBarco){
     Salidas salidas = new Salidas(Id_Salida, Fecha, HoraSalida, Destino, NomSocio, NomBarco);
@@ -35,6 +30,7 @@ public class ControladorSalidas extends ConexionSalidas{
             return false;
         }
     }
+    
     
     //Para utilizar la tabla a insercion de la informacion
     public DefaultTableModel salidas(){

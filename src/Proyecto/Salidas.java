@@ -78,8 +78,8 @@ public class Salidas{
 
     @Override
     public String toString() {
-        return "Salidas{" + "Id_Salida=" + Id_Salida + ", Fecha=" + Fecha + ", HoraSalida=" + HoraSalida + ", Destino=" + Destino + ", NomSocio=" + NomSocio + ", NomBarco=" + NomBarco + '}';
+        return "Salidas{" + "Id_Salida=" + Id_Salida + ", Fecha=" + Fecha + 
+                ", HoraSalida=" + HoraSalida + ", Destino=" + Destino + ", NomSocio=" + 
+                NomSocio + ", NomBarco=" + NomBarco + '}';
     }
-
-    
 }

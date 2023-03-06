@@ -12,16 +12,10 @@ import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
 import java.io.File;
 
-/**
- *
- * @author lo397
- */
 public class Conexion {
      private ObjectContainer oc;
     File file = new File("database3.yap");
     int IdSocio;
-    int IdBarco;
-    
     
     private void open(){
         this.oc = Db4o.openFile("database3.yap");
@@ -36,12 +30,10 @@ public class Conexion {
            
             if (resultados.hasNext()) {
                 socio = new Socio[resultados.size()];
-                
                 while (resultados.hasNext()){
                     socio[i] = (Socio) resultados.next();
                     i++;
                 }
-                
                 IdSocio = (socio[socio.length-1].getIdSocio())+1;
                 System.out.println("Id: "+ IdSocio);
             }
@@ -84,14 +76,12 @@ public class Conexion {
                 this.oc.close();
                 return false;
             }
-                    //String nombre,String color, int altura, int ancho, int profundidad, int niveles, int cajones
-            
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             System.out.println("bdoo.Controlador.actualizarSocio() : "+ e);
             return false;
         }
-        
     }
+    
     
     public void BuscarSocio(Socio objeto){
         this.open();
@@ -146,7 +136,6 @@ public class Conexion {
             return false;
         }
     }
- 
-   
-    
 }
+
+

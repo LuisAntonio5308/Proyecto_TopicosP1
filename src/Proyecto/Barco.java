@@ -70,10 +70,9 @@ public class Barco {
 
     @Override
     public String toString() {
-        return "Barco{" + "IdBarco=" + IdBarco + ", NumMatricula=" + NumMatricula + ", Nombre=" + Nombre + ", NumAmarre=" + NumAmarre + ", Cuota=" + Cuota + '}';
+        return "Barco{" + "IdBarco=" + IdBarco + 
+                ", NumMatricula=" + NumMatricula + ", Nombre=" + Nombre + ", NumAmarre=" 
+                + NumAmarre + ", Cuota=" + Cuota + '}';
     }
-    
-    
-
    
 }

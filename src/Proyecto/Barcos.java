@@ -57,7 +57,6 @@ public void seleccionarBarco(){
     }
     
 private void insertarBarco(){
-
     try {
         int matricula = Integer.parseInt(txtMatricula.getText());
         String nombre = txtNombre.getText();
@@ -99,9 +98,8 @@ private void actualizarBarco(){
         }else{
             JOptionPane.showMessageDialog(null, "Algo fallo al Actualizar");
         }
-    
-    
 }
+
 
 private void eliminarBarco(){
     try {
@@ -110,7 +108,6 @@ private void eliminarBarco(){
         int amarre = Integer.parseInt(txtAmarre.getText());
         float cuota = Float.parseFloat(txtCuota.getText());
         int id = Integer.parseInt(txtIdBarco.getText());
-        
         
     boolean eliminado = this.controlador.eliminarBarco(id, matricula, nombre, amarre, cuota);
         if (eliminado==true) {
@@ -123,9 +120,9 @@ private void eliminarBarco(){
         
     } catch (NumberFormatException | HeadlessException e) {
         JOptionPane.showMessageDialog(null, "El valor introducido no es un numero");
-        
     }
 }
+
 
 private void cancelar(){
     txtIdBarco.setText("");

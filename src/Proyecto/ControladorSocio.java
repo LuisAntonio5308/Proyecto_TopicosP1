@@ -7,10 +7,6 @@ package Proyecto;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author lo397
- */
 public class ControladorSocio extends Conexion{
     public ControladorSocio(){}
     
